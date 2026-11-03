@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    sh 'javac AddNumbers.java'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    sh 'java AddNumbers'
+                }
+            }
+        }
+        stage('Package') {
+            steps {
+                script {
+                    sh 'jar cf AddNumbers.jar AddNumbers.class'
+                }
+            }
+        }
+    }
+}
+
